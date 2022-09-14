@@ -32,11 +32,8 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="GoodWeather" id="eee-B2-D55">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="gear" catalog="system" id="5N3-kp-sxg">
-                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </barButtonItem>
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="gear" catalog="system" id="5N3-kp-sxg"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Ynz-pA-eGG">
-                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <segue destination="gsx-X3-KRa" kind="presentation" id="PuG-gB-c96"/>
                             </connections>

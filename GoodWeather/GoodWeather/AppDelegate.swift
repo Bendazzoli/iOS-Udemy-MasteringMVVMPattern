@@ -13,7 +13,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+
+        let backgroundColor = UIColor(displayP3Red: 52 / 255, green: 152 / 255, blue: 219 / 255, alpha: 1.0)
+        let componentsColor = UIColor.white
+
+        if #available(iOS 13.0, *) {
+            let navBarAppearance = UINavigationBarAppearance()
+            navBarAppearance.configureWithOpaqueBackground()
+            navBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: componentsColor]
+            navBarAppearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: componentsColor]
+            navBarAppearance.backgroundColor = backgroundColor
+            UINavigationBar.appearance().standardAppearance = navBarAppearance
+            UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
+        } else {
+            UINavigationBar.appearance().barTintColor = backgroundColor
+            UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: componentsColor]
+            UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: componentsColor]
+        }
+
+        UIBarButtonItem.appearance().tintColor = componentsColor
+
         return true
     }
 

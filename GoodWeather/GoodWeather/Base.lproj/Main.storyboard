@@ -75,10 +75,41 @@
                     <view key="view" contentMode="scaleToFill" id="90o-ME-Sdb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ovk-je-yw3">
+                                <rect key="frame" x="15" y="72" width="382" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jZJ-un-4mV">
+                                <rect key="frame" x="179.5" y="122" width="55.5" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Save"/>
+                                <connections>
+                                    <action selector="saveCityButtonPressed:" destination="tKd-wT-v0k" eventType="touchUpInside" id="RRM-X7-jne"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="I5n-ci-KPR"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="jZJ-un-4mV" firstAttribute="top" secondItem="Ovk-je-yw3" secondAttribute="bottom" constant="16" id="Ci5-7y-gmW"/>
+                            <constraint firstItem="I5n-ci-KPR" firstAttribute="trailing" secondItem="Ovk-je-yw3" secondAttribute="trailing" constant="16" id="DL5-uG-wmT"/>
+                            <constraint firstItem="jZJ-un-4mV" firstAttribute="centerX" secondItem="90o-ME-Sdb" secondAttribute="centerX" id="I19-6N-3Re"/>
+                            <constraint firstItem="Ovk-je-yw3" firstAttribute="top" secondItem="I5n-ci-KPR" secondAttribute="top" constant="16" id="OlE-8L-331"/>
+                            <constraint firstItem="Ovk-je-yw3" firstAttribute="leading" secondItem="I5n-ci-KPR" secondAttribute="leading" constant="16" id="lej-39-f7U"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Add City" id="0hj-1n-rdI"/>
+                    <navigationItem key="navigationItem" title="Add City" id="0hj-1n-rdI">
+                        <barButtonItem key="leftBarButtonItem" title="Close" image="xmark" catalog="system" id="j0D-XM-0Om">
+                            <connections>
+                                <action selector="closeCityButtonPressed:" destination="tKd-wT-v0k" id="pMx-s6-rbf"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="cityNameTextfield" destination="Ovk-je-yw3" id="u4y-Mp-e36"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pXc-m8-Z4M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -123,6 +154,7 @@
     </scenes>
     <resources>
         <image name="gear" catalog="system" width="128" height="119"/>
+        <image name="xmark" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

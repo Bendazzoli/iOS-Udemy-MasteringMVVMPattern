@@ -27,7 +27,7 @@ class SettingsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let settingsItem = settingsVM.units[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "settingsCell", for: indexPath)
         cell.textLabel?.text = settingsItem.displayName
         return cell
     }

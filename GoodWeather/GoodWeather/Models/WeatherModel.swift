@@ -9,6 +9,7 @@ import UIKit
 
 struct WeatherResponse: Decodable {
     let main: WeatherModel?
+    let name: String?
 }
 
 struct WeatherModel: Decodable {

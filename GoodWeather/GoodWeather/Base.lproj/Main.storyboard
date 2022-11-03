@@ -59,7 +59,7 @@
                         <barButtonItem key="leftBarButtonItem" title="Item" image="gear" catalog="system" id="5N3-kp-sxg"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Ynz-pA-eGG">
                             <connections>
-                                <segue destination="gsx-X3-KRa" kind="presentation" id="PuG-gB-c96"/>
+                                <segue destination="gsx-X3-KRa" kind="presentation" identifier="AddWeatherCityViewController" id="PuG-gB-c96"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

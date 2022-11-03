@@ -33,6 +33,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         UIBarButtonItem.appearance().tintColor = componentsColor
 
+        setupDefaultSettings()
+
         return true
     }
 
@@ -50,6 +52,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 
+    private func setupDefaultSettings() {
+        let userDefaults = UserDefaults.standard
+
+        if userDefaults.value(forKey: "unit") == nil {
+            userDefaults.set(Unit.celsius.rawValue, forKey: "unit")
+        }
+    }
 
 }
 

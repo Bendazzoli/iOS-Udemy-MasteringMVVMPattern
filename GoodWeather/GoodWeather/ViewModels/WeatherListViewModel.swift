@@ -19,20 +19,43 @@ class WeatherListViewModel {
     func modelAt(_ index: Int) -> WeatherViewModel {
         return weatherViewModels[index]
     }
+
+    func updateUnit(to unit: Unit) {
+        switch unit {
+        case .celsius:
+            toCelsius()
+        case .fahrenheit:
+            toFahrenheit()
+        }
+    }
+
+    private func toCelsius() {
+        weatherViewModels = weatherViewModels.map { vm in
+            let weatherModel = vm
+            weatherModel.temperature = (weatherModel.temperature - 32) * 5/9
+            return weatherModel
+        }
+    }
+
+    private func toFahrenheit() {
+        weatherViewModels = weatherViewModels.map { vm in
+            let weatherModel = vm
+            weatherModel.temperature = (weatherModel.temperature * 9/5) + 32
+            return weatherModel
+        }
+    }
 }
 
 class WeatherViewModel {
     let weather: WeatherResponse
+    var temperature: Double
 
     init(weather: WeatherResponse) {
         self.weather = weather
+        temperature = weather.main?.temp ?? 999.9
     }
 
     var city: String {
         weather.name ?? "Error City"
-    }
-
-    var temperature: Double {
-        weather.main?.temp ?? 999.9
     }
 }

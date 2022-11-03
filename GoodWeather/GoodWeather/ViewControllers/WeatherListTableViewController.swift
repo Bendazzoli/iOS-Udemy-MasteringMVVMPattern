@@ -12,12 +12,14 @@ class WeatherListTableViewController: UITableViewController, AddWeatherDelegate,
     // MARK: Properties
 
     private var weatherListViewModel = WeatherListViewModel()
+    private var lastUnitSelection: Unit!
 
     // MARK: - App Lifecicle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.prefersLargeTitles = true
+        lastUnitSelection = getLastUnitSelected()
     }
 
     // MARK: - Delegate's Funcs
@@ -28,7 +30,11 @@ class WeatherListTableViewController: UITableViewController, AddWeatherDelegate,
     }
 
     func settingsDone(settingsVM: SettingsViewModel) {
-        print("disparou o settingsDone")
+        if lastUnitSelection.rawValue != settingsVM.selectedUnit.rawValue {
+            weatherListViewModel.updateUnit(to: settingsVM.selectedUnit)
+            tableView.reloadData()
+            lastUnitSelection = Unit(rawValue: settingsVM.selectedUnit.rawValue)!
+        }
     }
 
     // MARK: - Table View Datasource
@@ -56,6 +62,8 @@ class WeatherListTableViewController: UITableViewController, AddWeatherDelegate,
         }
     }
 
+    // MARK: - Private funcs
+
     private func prepareSegueForAddWeatherCityViewController(segue: UIStoryboardSegue) {
         guard let nav = segue.destination as? UINavigationController else {
             fatalError("NavigationController not found")
@@ -80,7 +88,11 @@ class WeatherListTableViewController: UITableViewController, AddWeatherDelegate,
         settingsVC.delegate = self
     }
 
-
+    private func getLastUnitSelected() -> Unit {
+        let userDefaults = UserDefaults.standard
+        let value = userDefaults.value(forKey: "unit") as? String
+        return Unit(rawValue: value ?? "") ?? Unit.fahrenheit
+    }
 
     // MARK: - Table View Delegate
 

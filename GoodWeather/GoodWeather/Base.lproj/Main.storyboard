@@ -58,7 +58,7 @@
                     <navigationItem key="navigationItem" title="GoodWeather" id="eee-B2-D55">
                         <barButtonItem key="leftBarButtonItem" title="Item" image="gear" catalog="system" id="5N3-kp-sxg">
                             <connections>
-                                <segue destination="gCW-gw-ct0" kind="presentation" id="I0Z-wn-YDm"/>
+                                <segue destination="GTi-ZB-3kj" kind="presentation" identifier="SettingsTableViewController" id="6dO-Zr-O0Y"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Ynz-pA-eGG">
@@ -95,7 +95,13 @@
                             <outlet property="delegate" destination="02n-Ro-zJ4" id="j9L-EO-Swa"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Settings" id="3xD-Il-o1c"/>
+                    <navigationItem key="navigationItem" title="Settings" id="3xD-Il-o1c">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="gear.badge.checkmark" catalog="system" id="Fdq-d2-KZc">
+                            <connections>
+                                <action selector="done" destination="02n-Ro-zJ4" id="Rve-Ew-tXf"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D6Z-po-qAH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -185,26 +191,27 @@
             <point key="canvasLocation" x="1324.6376811594205" y="146.65178571428569"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="8Us-aB-lsb">
+        <scene sceneID="JxW-ek-gcg">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gCW-gw-ct0" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GTi-ZB-3kj" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lom-YU-0Op">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Lj4-N5-f0D">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="02n-Ro-zJ4" kind="relationship" relationship="rootViewController" id="mgE-w2-RFR"/>
+                        <segue destination="02n-Ro-zJ4" kind="relationship" relationship="rootViewController" id="hbU-kL-jwi"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="muc-gS-JLa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dSb-wl-RTR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1325" y="-585"/>
         </scene>
     </scenes>
     <resources>
         <image name="gear" catalog="system" width="128" height="119"/>
+        <image name="gear.badge.checkmark" catalog="system" width="128" height="111"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

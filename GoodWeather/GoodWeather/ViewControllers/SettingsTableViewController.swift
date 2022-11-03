@@ -8,9 +8,22 @@
 import Foundation
 import UIKit
 
+protocol SettingsDelegate {
+    func settingsDone(settingsVM: SettingsViewModel)
+}
+
 class SettingsTableViewController: UITableViewController {
 
     private var settingsVM = SettingsViewModel()
+    var delegate: SettingsDelegate?
+
+    @IBAction func done() {
+        if let delegate = delegate {
+            delegate.settingsDone(settingsVM: settingsVM)
+        }
+
+        self.dismiss(animated: true, completion: nil)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class WeatherListTableViewController: UITableViewController, AddWeatherDelegate {
+class WeatherListTableViewController: UITableViewController, AddWeatherDelegate, SettingsDelegate {
 
     // MARK: Properties
 
@@ -20,9 +20,15 @@ class WeatherListTableViewController: UITableViewController, AddWeatherDelegate 
         self.navigationController?.navigationBar.prefersLargeTitles = true
     }
 
+    // MARK: - Delegate's Funcs
+
     func addWeatherDidSave(weatherVM: WeatherViewModel) {
         weatherListViewModel.addWeatherViewModel(weatherVM)
         self.tableView.reloadData()
+    }
+
+    func settingsDone(settingsVM: SettingsViewModel) {
+        print("disparou o settingsDone")
     }
 
     // MARK: - Table View Datasource
@@ -45,6 +51,8 @@ class WeatherListTableViewController: UITableViewController, AddWeatherDelegate 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "AddWeatherCityViewController" {
             prepareSegueForAddWeatherCityViewController(segue: segue)
+        } else if segue.identifier == "SettingsTableViewController" {
+            prepareSegueForSettingsViewController(segue: segue)
         }
     }
 
@@ -59,6 +67,20 @@ class WeatherListTableViewController: UITableViewController, AddWeatherDelegate 
 
         addWeatherCityVC.delegate = self
     }
+
+    private func prepareSegueForSettingsViewController(segue: UIStoryboardSegue) {
+        guard let nav = segue.destination as? UINavigationController else {
+            fatalError("NavigationController not found")
+        }
+
+        guard let settingsVC = nav.viewControllers.first as? SettingsTableViewController else {
+            fatalError("SettingsTableViewController not found")
+        }
+
+        settingsVC.delegate = self
+    }
+
+
 
     // MARK: - Table View Delegate
 
